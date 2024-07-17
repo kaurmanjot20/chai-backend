@@ -15,3 +15,12 @@
 # this will start nodemon to restart index.js inside of the src when npm run dev cmd is used
 
 # install prettier as a dev dependency for better code readability 
+
+# database is always in another continent. use try catch and take care of async await
+
+# -r dotenv/config --exprimental-json-modules 
+# write this above in the scripts so that the dotenv is loaded and import dotenv can be used in place of require
+
+# sometimes module not found can be due to missing extensions in import
+
+# if env variables are changed, manually restart the server
