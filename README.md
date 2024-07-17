@@ -14,3 +14,4 @@
   }
 # this will start nodemon to restart index.js inside of the src when npm run dev cmd is used
 
+# install prettier as a dev dependency for better code readability 
