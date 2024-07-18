@@ -24,3 +24,5 @@
 # sometimes module not found can be due to missing extensions in import
 
 # if env variables are changed, manually restart the server
+
+# app.use() used for middleware and config settings
