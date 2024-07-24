@@ -26,3 +26,19 @@
 # if env variables are changed, manually restart the server
 
 # app.use() used for middleware and config settings
+
+# mongoose-aggregate-paginate-v2 npm package for aggregation
+
+# bcrypt and bcryptjs: handling encryption decryption of passwords
+
+# jsonwebtoken
+
+# jwt.io
+
+# direct encryption not possible so hooks are used like pre: it runs just before controller or the call like just before data saving
+
+# jwt is a bearer token. its like a key..one who has jwt token gets the data
+
+# express-fileupload and multer - used for file uploading/handling
+
+# nodejs fs- (fs=file system) comes with nodejs as builtin.
