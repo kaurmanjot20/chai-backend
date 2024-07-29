@@ -30,30 +30,31 @@ const registerUser =  asyncHandler(async (req,res) =>{
    }
     */
    if(
-    [fullName, email, username, password].some(()=>
+    [fullName, email, username, password].some(field=>
     field?.trim()=== "")
    ){
     throw new ApiError(400, "All fields are required")
    }
    // check if user already exists: username, email
-   const existedUser = User.findOne({
+   const existedUser = await User.findOne({
     $or:[{username},{email}]
    })
    if(existedUser){
     throw new ApiError(409, "User with email or username already exists")
    }
+   console.log(req.files)
    // check for images, check for avatar
-   const avatarLocalPath = req.files?.avatar[0]?.path         //access to req.files by multer
-   const coverImageLocalPath = req.files?.coverImage[0]?.path
+   const avatarLocalPath = req.files?.avatar?.[0]?.path         //access to req.files by multer
+   const coverImageLocalPath = req.files?.coverImage?.[0]?.path
 
    if(!avatarLocalPath){
     throw new ApiError(400, "Avatar file is required")
    }
    // upload them to cloudinary, recheck for avatar
    const avatar = await uploadOnCloudinary(avatarLocalPath)
-   const coverImage = await uploadOnCloudinary(coverImageLocalPath)
+   const coverImage =  coverImageLocalPath ? await uploadOnCloudinary(coverImageLocalPath): null
 
-   if(!avatar){
+   if(!avatar || !avatar.url){
     throw new ApiError(400, "Avatar file is required")
    }
    // create user object (mongoDB a no-sql db) - create entry in db
